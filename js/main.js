@@ -1,50 +1,58 @@
 "use strict";
 
-// So we don't have to keep re-finding things on page, find DOM elements once:
-
+// Cache DOM elements for easy access
 const $body = $("body");
 
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
+const $storiesContainer = $("#stories-container");
+const $ownStories = $("#my-stories");
+const $favoritedStories = $("#favorited-stories");
+
+const $storiesLists = $(".stories-list");
+
+const $submitForm = $("#submit-form");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
+
+const $navSubmitStory = $("#nav-submit-story");
 
 const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 
-/** To make it easier for individual components to show just themselves, this
- * is a useful function that hides pretty much everything on the page. After
- * calling this, individual components can re-show just what they want.
- */
+const $userProfile = $("#user-profile");
 
+/** Hides most page components to allow individual components to show themselves as needed. */
 function hidePageComponents() {
   const components = [
     $allStoriesList,
     $loginForm,
     $signupForm,
+    $userProfile,
+    $submitForm,
   ];
+
   components.forEach(c => c.hide());
 }
 
-/** Overall function to kick off the app. */
-
+/** Main function to start the app. */
 async function start() {
   console.debug("start");
 
-  // "Remember logged-in user" and log in, if credentials in localStorage
+  // Attempt to log in a remembered user, if credentials are in localStorage
   await checkForRememberedUser();
   await getAndShowStoriesOnStart();
 
-  // if we got a logged-in user
+  // Update UI if a user is logged in
   if (currentUser) updateUIOnUserLogin();
 }
 
-// Once the DOM is entirely loaded, begin the app
-
-console.warn("HEY STUDENT: This program sends many debug messages to" +
-  " the console. If you don't see the message 'start' below this, you're not" +
-  " seeing those helpful debug messages. In your browser console, click on" +
-  " menu 'Default Levels' and add Verbose");
+// Begin the app once the DOM is fully loaded
+console.warn(
+  "HEY STUDENT: This program sends many debug messages to the console. " +
+  "If you don't see the message 'start' below this, you're not seeing those helpful debug messages. " +
+  "In your browser console, click on the menu 'Default Levels' and add 'Verbose'."
+);
 $(start);

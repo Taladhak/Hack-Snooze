@@ -21,3 +21,9 @@ nav {
   margin-left: auto;
   text-align: right;
 }
+.main-nav-links{
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 20px;
+}

@@ -8,6 +8,8 @@
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
 }
 
 #stories-loading-msg {
@@ -15,6 +17,13 @@
   font-size: 150%;
   margin: 20px 30px;
 }
+
+#favorited-stories,
+#my-stories {
+  list-style: none;
+  padding-left: 20px;
+}
+
 
 
 /* Individual stories */
@@ -32,8 +41,24 @@
 
 .story-author {
   margin-left: 2em;
+  color: green;
+  font-size: 1rem;
+  padding: 6px 0;
 }
 
 .story-user {
   display: block;
+  color: orange;
+  margin-left: 2em;
+  font-size: 1rem;
+}
+
+.trash-can:hover{
+  color: red;
+}
+
+.star, .trash-can{
+  font-size: 1rem;
+  margin:  0 5px;
+  cursor: pointer;
 }
